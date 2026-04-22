@@ -80,7 +80,7 @@ body{
 <div id="aic"></div>
 <script>
 const CONFIG = {
-  LEAD_ENDPOINT: 'YOUR_GOOGLE_APPS_SCRIPT_URL',
+  LEAD_ENDPOINT: 'https://script.google.com/macros/s/AKfycbyLbcnWuThOxoFaMVr1bT5c4yEigPR4-IR4MfqokW-NQXOVxOe10TNcTjMlLcTFxEgD5w/exec',
   FALLBACK_WEB3FORMS_KEY: 'YOUR_WEB3FORMS_KEY',
   DEBUG: false
 };
@@ -111,7 +111,7 @@ function stateFrom(zip){const z=parseInt((zip+'000').slice(0,3));if(z>=800&&z<=8
 function saveLeadLocally(lead){try{const e=JSON.parse(localStorage.getItem('aic_leads')||'[]');e.push({...lead,savedAt:new Date().toISOString()});localStorage.setItem('aic_leads',JSON.stringify(e));}catch(e){}}
 async function submitLead(lead){
   saveLeadLocally(lead);
-  if(CONFIG.LEAD_ENDPOINT&&CONFIG.LEAD_ENDPOINT!=='YOUR_GOOGLE_APPS_SCRIPT_URL'){try{await fetch(CONFIG.LEAD_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(lead)});return true;}catch(e){}}
+  if(CONFIG.LEAD_ENDPOINT&&CONFIG.LEAD_ENDPOINT!=='https://script.google.com/macros/s/AKfycbyLbcnWuThOxoFaMVr1bT5c4yEigPR4-IR4MfqokW-NQXOVxOe10TNcTjMlLcTFxEgD5w/exec'){try{await fetch(CONFIG.LEAD_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(lead)});return true;}catch(e){}}
   if(CONFIG.FALLBACK_WEB3FORMS_KEY&&CONFIG.FALLBACK_WEB3FORMS_KEY!=='YOUR_WEB3FORMS_KEY'){try{await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({access_key:CONFIG.FALLBACK_WEB3FORMS_KEY,subject:'New Lead — '+lead.name+' ('+lead.state+')',...lead})});return true;}catch(e){}}
   return false;
 }
