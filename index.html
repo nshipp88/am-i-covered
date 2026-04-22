@@ -2,17 +2,39 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Am I Covered? — Insurance Education Funnel</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Am I Covered? — Find Out If You're Financially Protected</title>
+
+<!-- Open Graph / Social sharing -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Am I Covered? — Find Out In 60 Seconds">
+<meta property="og:description" content="See the real cost of being uninsured in your state. Takes 60 seconds.">
+<meta property="og:image" content="https://nshipp88.github.io/am-i-covered/og-image.png">
+<meta property="og:url" content="https://nshipp88.github.io/am-i-covered/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Am I Covered? — Find Out In 60 Seconds">
+<meta name="twitter:description" content="See the real cost of being uninsured in your state.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://nshipp88.github.io/am-i-covered/">
+
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:#E8E4DD;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:20px 0}
-#aic{width:390px;min-height:700px;position:relative;overflow:hidden;border-radius:0}
+body{
+  background:#E8E4DD;
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  min-height:100vh;
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  padding:20px 0
+}
+#aic{width:390px;min-height:700px;position:relative;overflow:hidden}
 .sd{background:#070707;color:#F0EDE6;min-height:700px;display:flex;flex-direction:column}
 .sl{background:#F5F2EC;color:#1A1A1A;min-height:700px;display:flex;flex-direction:column}
 .topbar{height:3px;width:100%;background:rgba(255,255,255,.08)}
 .topbar-l{height:3px;width:100%;background:rgba(0,0,0,.08)}
-.bf{height:100%;background:#E84010;transition:width .35s}
+.bf{height:100%;background:#E84010;transition:width .4s cubic-bezier(.4,0,.2,1)}
 .pad{padding:22px 20px 28px;flex:1;display:flex;flex-direction:column}
 .tag{font-size:10px;letter-spacing:.09em;font-weight:700;margin-bottom:8px;color:#E84010}
 .h1{font-size:22px;font-weight:700;line-height:1.3;margin-bottom:8px}
@@ -20,9 +42,9 @@ body{background:#E8E4DD;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',
 .sub-l{font-size:13px;line-height:1.65;color:rgba(26,26,26,.5);margin-bottom:20px}
 .big{font-size:42px;font-weight:700;line-height:1}
 .divd{height:.5px;background:rgba(255,255,255,.08);margin:16px 0}
-.divl{height:.5px;background:rgba(0,0,0,.08);margin:16px 0}
-.btn{width:100%;padding:15px;background:#E84010;border:none;border-radius:10px;color:#fff;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;letter-spacing:.01em}
-.btn:active{opacity:.88}
+.btn{width:100%;padding:15px;background:#E84010;border:none;border-radius:10px;color:#fff;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;letter-spacing:.01em;transition:opacity .12s,transform .08s}
+.btn:active{opacity:.88;transform:scale(.99)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
 .btn-ol{width:100%;padding:13px;background:transparent;border:1.5px solid rgba(255,255,255,.18);border-radius:10px;color:rgba(240,237,230,.7);font-size:14px;cursor:pointer;font-family:inherit;margin-top:8px}
 .btn-ll{width:100%;padding:13px;background:transparent;border:1.5px solid #D0CAC0;border-radius:10px;color:rgba(26,26,26,.55);font-size:14px;cursor:pointer;font-family:inherit;margin-top:8px}
 .mcq{width:100%;padding:14px 16px;border-radius:10px;font-size:14px;text-align:left;cursor:pointer;margin-bottom:8px;font-family:inherit;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:#F0EDE6;transition:border-color .12s,background .12s;display:flex;align-items:center;gap:10px}
@@ -37,350 +59,88 @@ body{background:#E8E4DD;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',
 .sel .mcq-letter-l{background:rgba(232,64,16,.2);color:#C03008}
 .zip-in{width:100%;padding:16px 18px;border:2px solid #D0CAC0;border-radius:10px;font-size:24px;letter-spacing:.12em;font-family:inherit;background:#fff;color:#1A1A1A;outline:none;transition:border-color .15s}
 .zip-in:focus{border-color:#E84010}
+.txt-in{width:100%;padding:13px 14px;border:1.5px solid #D0CAC0;border-radius:8px;font-size:14px;font-family:inherit;background:#fff;color:#1A1A1A;outline:none;transition:border-color .15s}
+.txt-in:focus{border-color:#E84010;outline:none}
 .sc-card{background:#fff;border:1.5px solid #E0D9CF;border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:14px;cursor:pointer;margin-bottom:8px;transition:border-color .12s,background .12s}
 .sc-card:active{border-color:#E84010;background:#FFF5F2}
 .stat-row{display:flex;justify-content:space-between;align-items:baseline;padding:5px 0;border-bottom:1px solid #F0E8E0;font-size:12px}
 .stat-row:last-child{border-bottom:none}
 .bar-wrap{background:rgba(0,0,0,.06);border-radius:6px;height:7px;overflow:hidden;margin-top:5px;margin-bottom:12px}
-.bar-inner{height:100%;border-radius:6px}
+.bar-inner{height:100%;border-radius:6px;transition:width .6s ease}
+.spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:8px}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
 @keyframes drive{from{left:-90px}to{left:225px}}
 @keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes spin{to{transform:rotate(360deg)}}
 .fadein{animation:fadein .3s ease}
+@media(max-width:430px){body{padding:0;align-items:stretch}#aic{width:100%;min-height:100vh;border-radius:0}.sd,.sl{min-height:100vh}}
 </style>
 </head>
 <body>
 <div id="aic"></div>
 <script>
-const S={screen:0,scenario:'car',answer:-1,zip:'',sc2:null,conf:null,name:'',phone:''};
-
+const CONFIG = {
+  LEAD_ENDPOINT: 'YOUR_GOOGLE_APPS_SCRIPT_URL',
+  FALLBACK_WEB3FORMS_KEY: 'YOUR_WEB3FORMS_KEY',
+  DEBUG: false
+};
+function getUTM(){const p=new URLSearchParams(window.location.search);return{source:p.get('utm_source')||'direct',medium:p.get('utm_medium')||'none',campaign:p.get('utm_campaign')||'none',content:p.get('utm_content')||'none',term:p.get('utm_term')||'none'};}
+const UTM=getUTM();
+const AB_VARIANT=(()=>{let v=sessionStorage.getItem('ab_v');if(!v){v=Math.random()<.5?'A':'B';sessionStorage.setItem('ab_v',v);}return v;})();
+const AB_HEADLINES={A:'Watch what happens next.',B:'One tap. Real numbers. Real exposure.'};
+const S={screen:0,scenario:'car',answer:-1,zip:'',stateCode:'',sc2:null,conf:null,name:'',phone:'',startTime:Date.now()};
 const SD={
-  CO:{name:'Colorado',  min:'25/50/15',prop:15000,col:47300,hail:23400,fld:29800,prem:'$88–$196'},
-  OK:{name:'Oklahoma',  min:'25/50/25',prop:25000,col:38200,hail:18500,fld:26400,prem:'$71–$162'},
-  KS:{name:'Kansas',    min:'25/50/25',prop:25000,col:35800,hail:17200,fld:23800,prem:'$66–$148'},
-  MO:{name:'Missouri',  min:'25/50/25',prop:25000,col:36500,hail:15800,fld:22300,prem:'$69–$155'},
-  NE:{name:'Nebraska',  min:'25/50/25',prop:25000,col:34900,hail:16400,fld:21600,prem:'$63–$141'},
-  TX:{name:'Texas',     min:'30/60/25',prop:25000,col:42100,hail:21400,fld:28500,prem:'$76–$168'}
+  CO:{name:'Colorado',min:'25/50/15',prop:15000,col:47300,hail:23400,fld:29800,prem:'$88–$196'},
+  OK:{name:'Oklahoma',min:'25/50/25',prop:25000,col:38200,hail:18500,fld:26400,prem:'$71–$162'},
+  KS:{name:'Kansas',min:'25/50/25',prop:25000,col:35800,hail:17200,fld:23800,prem:'$66–$148'},
+  MO:{name:'Missouri',min:'25/50/25',prop:25000,col:36500,hail:15800,fld:22300,prem:'$69–$155'},
+  NE:{name:'Nebraska',min:'25/50/25',prop:25000,col:34900,hail:16400,fld:21600,prem:'$63–$141'},
+  TX:{name:'Texas',min:'30/60/25',prop:25000,col:42100,hail:21400,fld:28500,prem:'$76–$168'},
+  IL:{name:'Illinois',min:'25/50/20',prop:20000,col:39800,hail:16900,fld:24300,prem:'$72–$158'},
+  CA:{name:'California',min:'15/30/5',prop:5000,col:52400,hail:14200,fld:31200,prem:'$94–$210'}
+};const SC={
+  car:{label:'Porsche collision',em:'🚗',hook:'You rear-end a Porsche 911 at a red light.',cost:'col',opts:['Under $10,000','$10,000 – $30,000','$30,000 – $75,000','Over $75,000'],reveal:'Luxury vehicle repairs easily exceed $50,000 — before any injury liability. A single collision can cost more than most people earn in a year.',gap:'State minimums cover $15,000–$25,000 in property damage. A Porsche 911 starts at $120,000.'},
+  hail:{label:'Hail storm',em:'⛈',hook:'Golf ball-sized hail hits your neighborhood for 8 minutes.',cost:'hail',opts:['Under $3,000','$3,000 – $12,000','$12,000 – $30,000','Over $30,000'],reveal:'The average hail claim across the Great Plains runs $15,000–$25,000 — roof, gutters, siding, windows, and sometimes vehicles.',gap:'Standard home policies cover hail — but high deductibles and underinsurance leave most homeowners with thousands out of pocket.'},
+  flood:{label:'Flash flood',em:'🌊',hook:'Storm drains overflow. Your street floods in 20 minutes.',cost:'fld',opts:['Under $5,000','$5,000 – $15,000','$15,000 – $40,000','Over $40,000'],reveal:'Flood damage averages $25,000–$35,000 per event. Standard homeowners policies exclude flood damage entirely — most people discover this after it is too late.',gap:'Flood coverage requires a separate policy. Most homeowners in flood-prone areas do not have one.'},
+  fire:{label:'Kitchen fire',em:'🔥',hook:'A grease fire spreads from the stovetop through the kitchen.',cost:'fld',opts:['Under $10,000','$10,000 – $40,000','$40,000 – $150,000','Over $150,000'],reveal:'The average house fire causes $77,000 in damage. Total losses on smaller homes regularly exceed $200,000 — and most families are underinsured.',gap:'Fire is covered by most homeowners policies — but underinsurance means payouts often fall far short of actual replacement cost.'}
 };
-
-const SC={
-  car:{label:'Porsche collision',em:'🚗',hook:'You rear-end a Porsche 911 at a red light.',cost:'col',
-    opts:['Under $10,000','$10,000 – $30,000','$30,000 – $75,000','Over $75,000'],
-    reveal:'Luxury vehicle repairs easily exceed $50,000 — before any injury liability. A single collision can cost more than most people earn in a year.',
-    gap:'State minimums cover $15,000–$25,000 in property damage. A Porsche 911 starts at $120,000.'},
-  hail:{label:'Hail storm',em:'⛈',hook:'Golf ball-sized hail hits your neighborhood for 8 minutes.',cost:'hail',
-    opts:['Under $3,000','$3,000 – $12,000','$12,000 – $30,000','Over $30,000'],
-    reveal:'The average hail claim across the Great Plains runs $15,000–$25,000 — roof, gutters, siding, windows, and sometimes vehicles.',
-    gap:'Standard home policies cover hail — but high deductibles and underinsurance leave most homeowners with thousands out of pocket.'},
-  flood:{label:'Flash flood',em:'🌊',hook:'Storm drains overflow. Your street floods in 20 minutes.',cost:'fld',
-    opts:['Under $5,000','$5,000 – $15,000','$15,000 – $40,000','Over $40,000'],
-    reveal:'Flood damage averages $25,000–$35,000 per event. Standard homeowners policies exclude flood damage entirely — most people discover this after it is too late.',
-    gap:'Flood coverage requires a separate policy. Most homeowners in flood-prone areas do not have one.'},
-  fire:{label:'Kitchen fire',em:'🔥',hook:'A grease fire spreads from the stovetop through the kitchen.',cost:'fld',
-    opts:['Under $10,000','$10,000 – $40,000','$40,000 – $150,000','Over $150,000'],
-    reveal:'The average house fire causes $77,000 in damage. Total losses on smaller homes regularly exceed $200,000 — and most families are underinsured.',
-    gap:'Fire is covered by most homeowners policies — but underinsurance means payouts often fall far short of actual replacement cost.'}
-};
-
 const fmt=n=>'$'+Number(n).toLocaleString();
 const pct=(n,t)=>Math.round(n/t*100);
-
-function stateFrom(zip){
-  const z=parseInt((zip+'000').slice(0,3));
-  if(z>=800&&z<=816)return'CO';
-  if(z>=730&&z<=748)return'OK';
-  if(z>=660&&z<=679)return'KS';
-  if(z>=630&&z<=658)return'MO';
-  if(z>=680&&z<=693)return'NE';
-  if(z>=750&&z<=799)return'TX';
-  return'CO';
+const tSec=()=>Math.round((Date.now()-S.startTime)/1000);
+function stateFrom(zip){const z=parseInt((zip+'000').slice(0,3));if(z>=800&&z<=816)return'CO';if(z>=730&&z<=748)return'OK';if(z>=660&&z<=679)return'KS';if(z>=630&&z<=658)return'MO';if(z>=680&&z<=693)return'NE';if(z>=750&&z<=799)return'TX';if(z>=600&&z<=629)return'IL';if(z>=900&&z<=961)return'CA';return'CO';}
+function saveLeadLocally(lead){try{const e=JSON.parse(localStorage.getItem('aic_leads')||'[]');e.push({...lead,savedAt:new Date().toISOString()});localStorage.setItem('aic_leads',JSON.stringify(e));}catch(e){}}
+async function submitLead(lead){
+  saveLeadLocally(lead);
+  if(CONFIG.LEAD_ENDPOINT&&CONFIG.LEAD_ENDPOINT!=='YOUR_GOOGLE_APPS_SCRIPT_URL'){try{await fetch(CONFIG.LEAD_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(lead)});return true;}catch(e){}}
+  if(CONFIG.FALLBACK_WEB3FORMS_KEY&&CONFIG.FALLBACK_WEB3FORMS_KEY!=='YOUR_WEB3FORMS_KEY'){try{await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({access_key:CONFIG.FALLBACK_WEB3FORMS_KEY,subject:'New Lead — '+lead.name+' ('+lead.state+')',...lead})});return true;}catch(e){}}
+  return false;
 }
-
-// ── SCREENS ──────────────────────────────────────────────────────────────────
-
-function s0(){
-  const sc=SC[S.scenario];
-  return`<div class="sd fadein">
-<div class="topbar"><div class="bf" style="width:${pct(1,9)}%"></div></div>
-<div style="position:relative;height:280px;overflow:hidden;flex-shrink:0">
-  <div style="position:absolute;inset:0;background:#0A0A14"></div>
-  <div style="position:absolute;bottom:0;left:0;right:0;height:120px;background:#1C1C1C"></div>
-  <div style="position:absolute;bottom:52px;left:0;right:0;height:4px;background:rgba(255,255,255,.07)"></div>
-  <div style="position:absolute;bottom:20px;left:0;right:0;height:2px;background:rgba(255,255,255,.04)"></div>
-  <div style="position:absolute;bottom:30px;left:20px;width:10px;height:10px;border-radius:50%;background:#FFD040;opacity:.6"></div>
-  <div style="position:absolute;bottom:30px;right:20px;width:10px;height:10px;border-radius:50%;background:#FFD040;opacity:.6"></div>
-  <div id="porsche" style="position:absolute;bottom:68px;right:55px">
-    <div style="width:92px;height:20px;background:#9B2418;border-radius:3px 4px 2px 2px"></div>
-    <div style="width:62px;height:15px;background:#7A1C12;border-radius:4px 4px 0 0;margin-left:14px;margin-top:-14px"></div>
-    <div style="display:flex;justify-content:space-between;padding:0 10px;margin-top:2px">
-      <div style="width:16px;height:16px;border-radius:50%;background:#111;border:2px solid #2A2A2A"></div>
-      <div style="width:16px;height:16px;border-radius:50%;background:#111;border:2px solid #2A2A2A"></div>
-    </div>
-  </div>
-  <div id="mover" style="position:absolute;bottom:70px;left:-90px;animation:drive 3s ease-in forwards">
-    <div style="width:78px;height:18px;background:#5A5A5A;border-radius:2px 3px 2px 2px"></div>
-    <div style="width:50px;height:14px;background:#484848;border-radius:3px 3px 0 0;margin-left:12px;margin-top:-13px"></div>
-    <div style="display:flex;justify-content:space-between;padding:0 8px;margin-top:3px">
-      <div style="width:14px;height:14px;border-radius:50%;background:#111;border:2px solid #2A2A2A"></div>
-      <div style="width:14px;height:14px;border-radius:50%;background:#111;border:2px solid #2A2A2A"></div>
-    </div>
-    <div style="position:absolute;top:3px;right:3px;width:8px;height:5px;background:#FFE060;border-radius:1px;opacity:.8"></div>
-  </div>
-  <div style="position:absolute;top:10px;left:12px;display:flex;align-items:center;gap:6px">
-    <div style="width:7px;height:7px;border-radius:50%;background:#E84010;animation:blink 1s infinite"></div>
-    <span style="font-size:9px;color:rgba(255,255,255,.4);letter-spacing:.08em">PLAYING</span>
-  </div>
-  <button onclick="go(1)" style="position:absolute;top:9px;right:12px;background:rgba(255,255,255,.1);border:none;color:rgba(255,255,255,.5);font-size:11px;padding:4px 10px;border-radius:4px;cursor:pointer;font-family:inherit">Skip ›</button>
-  <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.7);padding:7px 14px;font-size:11.5px;color:rgba(255,255,255,.75)">&#x1F507; ${sc.hook}</div>
-</div>
-<div class="pad">
-  <div class="tag">AM I COVERED?</div>
-  <div class="h1">Watch what happens next.</div>
-  <div class="sub">This plays out thousands of times a day across the country. What happens financially depends entirely on one thing.</div>
-  <div style="margin-top:auto">
-    <button class="btn" onclick="go(1)">See what this costs →</button>
-  </div>
-</div>
-</div>`;
-}
-
-function s1(){
-  const sc=SC[S.scenario];
-  return`<div class="sd fadein">
-<div class="topbar"><div class="bf" style="width:${pct(2,9)}%"></div></div>
-<div class="pad">
-  <div style="background:rgba(255,255,255,.05);border-radius:10px;padding:12px 14px;margin-bottom:20px;display:flex;align-items:center;gap:12px">
-    <span style="font-size:26px">${sc.em}</span>
-    <div>
-      <div style="font-size:9px;color:rgba(255,255,255,.35);letter-spacing:.07em;margin-bottom:3px">&#9646;&#9646; PAUSED</div>
-      <div style="font-size:12px;color:rgba(240,237,230,.65);line-height:1.45">${sc.hook}</div>
-    </div>
-  </div>
-  <div class="tag">QUICK QUESTION</div>
-  <div class="h1" style="margin-bottom:22px">How much do you think this is going to cost?</div>
-  ${sc.opts.map((o,i)=>`<button class="mcq${S.answer===i?' sel':''}" onclick="pick(${i})"><div class="mcq-letter">${String.fromCharCode(65+i)}</div>${o}</button>`).join('')}
-  <div style="margin-top:16px">
-    <button class="btn" onclick="if(S.answer>=0)go(2)" style="opacity:${S.answer>=0?1:.35}">See the answer →</button>
-  </div>
-</div>
-</div>`;
-}
-
-function s2(){
-  const sc=SC[S.scenario];
-  const sd=SD[S.sc2?S.sc2:S.stateCode||'CO'];
-  const cost=sd[sc.cost];
-  return`<div class="sd fadein">
-<div class="topbar"><div class="bf" style="width:${pct(3,9)}%"></div></div>
-<div class="pad">
-  <div class="tag">THE ANSWER</div>
-  <div style="font-size:13px;color:rgba(240,237,230,.4);margin-bottom:6px">You guessed: <span style="color:rgba(240,237,230,.7)">${sc.opts[S.answer]}</span></div>
-  <div style="margin-bottom:16px">
-    <div style="font-size:12px;color:rgba(240,237,230,.4);margin-bottom:4px">Average real-world cost</div>
-    <div class="big" style="color:#E84010">${fmt(cost)}</div>
-  </div>
-  <div style="font-size:13px;color:rgba(240,237,230,.6);line-height:1.65;margin-bottom:18px">${sc.reveal}</div>
-  <div class="divd"></div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px">
-    <div style="background:rgba(200,45,30,.1);border:1px solid rgba(200,45,30,.18);border-radius:8px;padding:13px 12px">
-      <div style="font-size:8.5px;color:rgba(225,90,70,.9);letter-spacing:.08em;font-weight:700;margin-bottom:7px">WITHOUT COVERAGE</div>
-      <div style="font-size:22px;font-weight:700;color:#F0EDE6">${fmt(cost)}</div>
-      <div style="font-size:9.5px;color:rgba(240,237,230,.3);margin-top:3px">Out of pocket</div>
-    </div>
-    <div style="background:rgba(27,140,90,.1);border:1px solid rgba(27,140,90,.18);border-radius:8px;padding:13px 12px">
-      <div style="font-size:8.5px;color:rgba(60,190,120,.9);letter-spacing:.08em;font-weight:700;margin-bottom:7px">WITH COVERAGE</div>
-      <div style="font-size:22px;font-weight:700;color:#F0EDE6">$500–$2K</div>
-      <div style="font-size:9.5px;color:rgba(240,237,230,.3);margin-top:3px">Deductible only</div>
-    </div>
-  </div>
-  <button class="btn" onclick="go(3)">See what this means in your state →</button>
-</div>
-</div>`;
-}
-
-function s3(){
-  const state=S.zip.length>=5?SD[stateFrom(S.zip)]:null;
-  return`<div class="sl fadein">
-<div class="topbar-l"><div class="bf" style="width:${pct(4,9)}%"></div></div>
-<div class="pad">
-  <div class="tag">YOUR STATE</div>
-  <div class="h1">Where are you located?</div>
-  <div class="sub-l">We'll show your state's minimum coverage requirements — and the gap between the legal minimum and actual protection.</div>
-  <input class="zip-in" id="zinp" type="tel" inputmode="numeric" maxlength="5" placeholder="Zip code" value="${S.zip}" oninput="S.zip=this.value;if(this.value.length>=5){S.stateCode=stateFrom(this.value);render()}">
-  <div style="height:20px;margin-top:8px;font-size:12px;color:#1B8C5E;font-weight:500">${state?'&#10003; '+state.name:''}</div>
-  <div style="margin-top:20px">
-    <button class="btn" onclick="if(S.zip.length>=5)go(4)" style="opacity:${S.zip.length>=5?1:.3}">Show my coverage breakdown →</button>
-  </div>
-  <div style="font-size:10.5px;color:rgba(26,26,26,.3);text-align:center;margin-top:14px;line-height:1.55">Your zip is used only to show local coverage data — not stored or shared.</div>
-</div>
-</div>`;
-}
-
-function s4(){
-  const sc=SC[S.scenario];
-  const sd=SD[S.stateCode||'CO'];
-  const cost=sd[sc.cost];
-  const gap=cost-sd.prop;
-  const cpct=Math.min(Math.round(sd.prop/cost*100),100);
-  return`<div class="sl fadein">
-<div class="topbar-l"><div class="bf" style="width:${pct(5,9)}%"></div></div>
-<div class="pad">
-  <div class="tag">${sd.name.toUpperCase()} · COVERAGE BREAKDOWN</div>
-  <div class="h1" style="margin-bottom:16px">Here's the gap.</div>
-  <div style="background:#fff;border:1.5px solid #E0D9CF;border-radius:12px;padding:14px 16px;margin-bottom:12px">
-    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px">
-      <span style="font-size:12px;color:rgba(26,26,26,.45)">Actual incident cost</span>
-      <span style="font-size:15px;font-weight:700;color:#C03008">${fmt(cost)}</span>
-    </div>
-    <div class="bar-wrap"><div class="bar-inner" style="width:100%;background:#F0A090"></div></div>
-    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px">
-      <span style="font-size:12px;color:rgba(26,26,26,.45)">State minimum covers</span>
-      <span style="font-size:15px;font-weight:700;color:#1B8C5E">${fmt(sd.prop)}</span>
-    </div>
-    <div class="bar-wrap"><div class="bar-inner" style="width:${cpct}%;background:#1B8C5E"></div></div>
-    <div style="display:flex;justify-content:space-between;padding-top:10px;margin-top:4px;border-top:1px solid #EDE8E0">
-      <span style="font-size:12px;color:rgba(26,26,26,.45)">Your potential out-of-pocket gap</span>
-      <span style="font-size:14px;font-weight:700;color:#C03008">${fmt(gap)}</span>
-    </div>
-  </div>
-  <div style="background:#fff;border:1.5px solid #E0D9CF;border-radius:10px;padding:11px 14px;margin-bottom:14px">
-    <div class="stat-row"><span style="color:rgba(26,26,26,.45)">State minimum liability</span><span style="font-weight:600">${sd.min}</span></div>
-    <div class="stat-row"><span style="color:rgba(26,26,26,.45)">Property damage limit</span><span style="font-weight:600">${fmt(sd.prop)}</span></div>
-    <div class="stat-row" style="border:none"><span style="color:rgba(26,26,26,.45)">Full coverage estimate</span><span style="font-weight:700;color:#1B8C5E">${sd.prem}/mo</span></div>
-  </div>
-  <div style="font-size:11px;color:rgba(26,26,26,.38);line-height:1.55;margin-bottom:20px">${sc.gap} · Source: Insurance Information Institute, 2024</div>
-  <button class="btn" onclick="go(5)">See more real scenarios →</button>
-</div>
-</div>`;
-}
-
-function s5(){
-  const others=Object.keys(SC).filter(k=>k!==S.scenario);
-  return`<div class="sl fadein">
-<div class="topbar-l"><div class="bf" style="width:${pct(6,9)}%"></div></div>
-<div class="pad">
-  <div class="tag">CHOOSE YOUR NEXT SCENARIO</div>
-  <div class="h1">Which situation are you most worried about?</div>
-  <div class="sub-l" style="margin-bottom:20px">Pick one to see the cost and your state's coverage breakdown.</div>
-  ${others.map(k=>`<div class="sc-card" onclick="S.sc2='${k}';go(6)">
-    <div style="width:42px;height:42px;background:#F0EAE0;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">${SC[k].em}</div>
-    <div style="flex:1">
-      <div style="font-weight:700;font-size:13.5px;color:#1A1A1A">${SC[k].label}</div>
-      <div style="font-size:11.5px;color:rgba(26,26,26,.45);margin-top:2px;line-height:1.4">${SC[k].hook}</div>
-    </div>
-    <div style="color:#CCC7BE;font-size:18px;font-weight:300">&#8250;</div>
-  </div>`).join('')}
-  <button class="btn-ll" onclick="go(7)">Skip — I've seen enough</button>
-</div>
-</div>`;
-}
-
-function s6(){
-  const sc=SC[S.sc2||'hail'];
-  const sd=SD[S.stateCode||'CO'];
-  const cost=sd[sc.cost];
-  const cost1=sd[SC[S.scenario].cost];
-  return`<div class="sd fadein">
-<div class="topbar"><div class="bf" style="width:${pct(7,9)}%"></div></div>
-<div class="pad">
-  <div style="font-size:30px;margin-bottom:10px">${sc.em}</div>
-  <div class="tag">${sc.label.toUpperCase()}</div>
-  <div class="h1" style="margin-bottom:10px">${sc.hook}</div>
-  <div class="sub">${sc.reveal}</div>
-  <div style="background:rgba(255,255,255,.05);border-radius:10px;padding:14px;margin-bottom:18px">
-    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px">
-      <span style="font-size:12px;color:rgba(240,237,230,.38)">Average cost · ${sd.name}</span>
-      <span style="font-size:15px;font-weight:700;color:#E84010">${fmt(cost)}</span>
-    </div>
-    <div style="display:flex;justify-content:space-between;align-items:baseline">
-      <span style="font-size:12px;color:rgba(240,237,230,.38)">With full coverage</span>
-      <span style="font-size:15px;font-weight:700;color:#5EC490">$500 – $2,000</span>
-    </div>
-  </div>
-  <div class="divd"></div>
-  <div style="font-size:13px;color:rgba(240,237,230,.55);line-height:1.65;margin-bottom:22px">Between these two scenarios alone: <span style="color:#F0EDE6;font-weight:600">${fmt(cost+cost1)}</span> in potential exposure — all of it coverable for a monthly premium.</div>
-  <button class="btn" onclick="go(7)">One last question →</button>
-</div>
-</div>`;
-}
-
-function s7(){
-  const opts=['Yes — I feel well covered','I\'m not sure what I have','Probably not — I have gaps'];
-  return`<div class="sl fadein">
-<div class="topbar-l"><div class="bf" style="width:${pct(8,9)}%"></div></div>
-<div class="pad">
-  <div class="tag">HONEST QUESTION</div>
-  <div class="h1" style="margin-bottom:8px">Based on what you just saw — do you feel financially protected if any of these happened today?</div>
-  <div class="sub-l" style="margin-bottom:20px">No right or wrong answer.</div>
-  ${opts.map((o,i)=>`<button class="mcq-l${S.conf===i?' sel':''}" onclick="S.conf=${i};render()"><div class="mcq-letter-l">${String.fromCharCode(65+i)}</div>${o}</button>`).join('')}
-  <div style="margin-top:16px">
-    <button class="btn" onclick="if(S.conf!==null)go(8)" style="opacity:${S.conf!==null?1:.3}">Continue →</button>
-  </div>
-</div>
-</div>`;
-}
-
-function s8(){
-  const sd=SD[S.stateCode||'CO'];
-  const headline=S.conf===0?'Confirm you\'re as covered as you think.':S.conf===1?'Find out exactly what you have.':'Find out exactly where your gaps are.';
-  return`<div class="sl fadein">
-<div class="topbar-l"><div class="bf" style="width:${pct(9,9)}%"></div></div>
-<div class="pad">
-  <div class="tag">FREE COVERAGE REVIEW</div>
-  <div class="h1" style="margin-bottom:8px">${headline}</div>
-  <div class="sub-l">A licensed agent in ${sd.name} will review your current coverage and tell you exactly where you stand — no cost, no obligation, no pressure.</div>
-  <div style="margin-bottom:10px">
-    <div style="font-size:9.5px;letter-spacing:.06em;font-weight:700;color:rgba(26,26,26,.4);margin-bottom:5px">FIRST NAME</div>
-    <input id="nm" style="width:100%;padding:13px 14px;border:1.5px solid #D0CAC0;border-radius:8px;font-size:14px;font-family:inherit;background:#fff;color:#1A1A1A;outline:none;transition:border-color .15s" placeholder="Your first name" value="${S.name}" oninput="S.name=this.value" onfocus="this.style.borderColor='#E84010'" onblur="this.style.borderColor='#D0CAC0'">
-  </div>
-  <div style="margin-bottom:14px">
-    <div style="font-size:9.5px;letter-spacing:.06em;font-weight:700;color:rgba(26,26,26,.4);margin-bottom:5px">PHONE NUMBER</div>
-    <input id="ph" type="tel" style="width:100%;padding:13px 14px;border:1.5px solid #D0CAC0;border-radius:8px;font-size:14px;font-family:inherit;background:#fff;color:#1A1A1A;outline:none;transition:border-color .15s" placeholder="(___) ___-____" value="${S.phone}" oninput="S.phone=this.value" onfocus="this.style.borderColor='#E84010'" onblur="this.style.borderColor='#D0CAC0'">
-  </div>
-  <div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:18px;background:#FFF8F5;border:1px solid #F0DDD5;border-radius:8px;padding:10px 12px">
-    <input type="checkbox" id="tc" checked style="margin-top:2px;flex-shrink:0;accent-color:#E84010">
-    <label for="tc" style="font-size:10.5px;color:rgba(26,26,26,.45);line-height:1.6">By submitting, I consent to be contacted by a licensed insurance professional regarding coverage options. Message & data rates may apply. I may opt out at any time. <span style="color:#E84010">View consent terms.</span></label>
-  </div>
-  <button class="btn" onclick="submit()">Connect me with a licensed agent →</button>
-  <div style="font-size:11px;color:rgba(26,26,26,.3);text-align:center;margin-top:10px;line-height:1.5">No spam. A real licensed agent calls within 24 hours.</div>
-</div>
-</div>`;
-}
-
-function s9(){
-  const sd=SD[S.stateCode||'CO'];
-  return`<div class="sd fadein">
-<div class="topbar"><div class="bf" style="width:100%"></div></div>
-<div class="pad" style="align-items:center;justify-content:center;text-align:center">
-  <div style="width:64px;height:64px;border-radius:50%;border:2px solid #E84010;display:flex;align-items:center;justify-content:center;margin:0 auto 20px">
-    <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M5 13l6 6 10-11" stroke="#E84010" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  </div>
-  <div style="font-size:9.5px;letter-spacing:.11em;color:#E84010;font-weight:700;margin-bottom:10px">YOU'RE ALL SET</div>
-  <div class="h1" style="margin-bottom:12px">Thanks${S.name?', '+S.name:''}.</div>
-  <div style="font-size:13.5px;color:rgba(240,237,230,.55);line-height:1.7;margin-bottom:28px">A licensed agent in ${sd.name} will call within 24 hours to walk through your coverage and tell you exactly where you stand.</div>
-  <div style="background:rgba(255,255,255,.06);border-radius:12px;padding:16px 18px;width:100%;text-align:left;margin-bottom:24px">
-    <div style="font-size:9px;letter-spacing:.09em;color:#E84010;font-weight:700;margin-bottom:12px">WHAT HAPPENS NEXT</div>
-    ${['They confirm your current policies and limits','They identify any gaps for your state and situation','You get a clear picture — no pressure, no commitment'].map((t,i)=>`<div style="display:flex;gap:10px;margin-bottom:8px"><span style="color:#E84010;font-size:12px;font-weight:700;flex-shrink:0">${i+1}.</span><span style="font-size:12px;color:rgba(240,237,230,.6);line-height:1.5">${t}</span></div>`).join('')}
-  </div>
-  <button class="btn-ol" onclick="restart()">See another scenario →</button>
-</div>
-</div>`;
-}
-
-// ── NAV ───────────────────────────────────────────────────────────────────────
-const screens=[s0,s1,s2,s3,s4,s5,s6,s7,s8,s9];
-function go(n){S.screen=n;render();}
-function render(){document.getElementById('aic').innerHTML=screens[S.screen]();}
-function pick(i){S.answer=i;render();}
-function submit(){
+function s0(){const sc=SC[S.scenario];return `<div class="sd fadein"><div class="topbar"><div class="bf" style="width:${pct(1,9)}%"></div></div><div style="position:relative;height:280px;overflow:hidden;flex-shrink:0"><div style="position:absolute;inset:0;background:#0A0A14"></div><div style="position:absolute;bottom:0;left:0;right:0;height:120px;background:#1C1C1C"></div><div style="position:absolute;bottom:52px;left:0;right:0;height:4px;background:rgba(255,255,255,.07)"></div><div style="position:absolute;bottom:30px;left:20px;width:10px;height:10px;border-radius:50%;background:#FFD040;opacity:.6"></div><div style="position:absolute;bottom:30px;right:20px;width:10px;height:10px;border-radius:50%;background:#FFD040;opacity:.6"></div><div style="position:absolute;bottom:68px;right:55px"><div style="width:92px;height:20px;background:#9B2418;border-radius:3px 4px 2px 2px"></div><div style="width:62px;height:15px;background:#7A1C12;border-radius:4px 4px 0 0;margin-left:14px;margin-top:-14px"></div><div style="display:flex;justify-content:space-between;padding:0 10px;margin-top:2px"><div style="width:16px;height:16px;border-radius:50%;background:#111;border:2px solid #2A2A2A"></div><div style="width:16px;height:16px;border-radius:50%;background:#111;border:2px solid #2A2A2A"></div></div></div><div style="position:absolute;bottom:70px;left:-90px;animation:drive 3s ease-in forwards"><div style="width:78px;height:18px;background:#5A5A5A;border-radius:2px 3px 2px 2px"></div><div style="width:50px;height:14px;background:#484848;border-radius:3px 3px 0 0;margin-left:12px;margin-top:-13px"></div><div style="display:flex;justify-content:space-between;padding:0 8px;margin-top:3px"><div style="width:14px;height:14px;border-radius:50%;background:#111;border:2px solid #2A2A2A"></div><div style="width:14px;height:14px;border-radius:50%;background:#111;border:2px solid #2A2A2A"></div></div><div style="position:absolute;top:3px;right:3px;width:8px;height:5px;background:#FFE060;border-radius:1px;opacity:.8"></div></div><div style="position:absolute;top:10px;left:12px;display:flex;align-items:center;gap:6px"><div style="width:7px;height:7px;border-radius:50%;background:#E84010;animation:blink 1s infinite"></div><span style="font-size:9px;color:rgba(255,255,255,.4);letter-spacing:.08em">PLAYING</span></div><button onclick="go(1)" style="position:absolute;top:9px;right:12px;background:rgba(255,255,255,.1);border:none;color:rgba(255,255,255,.5);font-size:11px;padding:4px 10px;border-radius:4px;cursor:pointer;font-family:inherit">Skip ›</button><div style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.7);padding:7px 14px;font-size:11.5px;color:rgba(255,255,255,.75)">🔇 ${sc.hook}</div></div><div class="pad"><div class="tag">AM I COVERED?</div><div class="h1">${AB_HEADLINES[AB_VARIANT]}</div><div class="sub">This plays out thousands of times a day. What happens financially depends entirely on one thing.</div><div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px">${Object.keys(SC).map(k=>`<button class="mcq${S.scenario===k?' sel':''}" onclick="S.scenario='${k}';render()"><div class="mcq-letter">${SC[k].em}</div>${SC[k].label}</button>`).join('')}</div><div style="margin-top:auto"><button class="btn" onclick="go(1)">See what this costs →</button></div></div></div>`;}
+function s1(){const sc=SC[S.scenario];return `<div class="sd fadein"><div class="topbar"><div class="bf" style="width:${pct(2,9)}%"></div></div><div class="pad"><div style="background:rgba(255,255,255,.05);border-radius:10px;padding:12px 14px;margin-bottom:20px;display:flex;align-items:center;gap:12px"><span style="font-size:26px">${sc.em}</span><div><div style="font-size:9px;color:rgba(255,255,255,.35);letter-spacing:.07em;margin-bottom:3px">⏸ PAUSED</div><div style="font-size:12px;color:rgba(240,237,230,.65);line-height:1.45">${sc.hook}</div></div></div><div class="tag">QUICK QUESTION</div><div class="h1" style="margin-bottom:22px">How much do you think this is going to cost?</div>${sc.opts.map((o,i)=>`<button class="mcq${S.answer===i?' sel':''}" onclick="pick(${i})"><div class="mcq-letter">${String.fromCharCode(65+i)}</div>${o}</button>`).join('')}<div style="margin-top:16px"><button class="btn" onclick="if(S.answer>=0)go(2)" style="opacity:${S.answer>=0?1:.35}">See the answer →</button></div></div></div>`;}
+function s2(){const sc=SC[S.scenario];const sd=SD[S.stateCode||'CO'];const cost=sd[sc.cost];return `<div class="sd fadein"><div class="topbar"><div class="bf" style="width:${pct(3,9)}%"></div></div><div class="pad"><div class="tag">THE ANSWER</div><div style="font-size:13px;color:rgba(240,237,230,.4);margin-bottom:6px">You guessed: <span style="color:rgba(240,237,230,.7)">${sc.opts[S.answer]}</span></div><div style="margin-bottom:16px"><div style="font-size:12px;color:rgba(240,237,230,.4);margin-bottom:4px">Average real-world cost</div><div class="big" style="color:#E84010">${fmt(cost)}</div></div><div style="font-size:13px;color:rgba(240,237,230,.6);line-height:1.65;margin-bottom:18px">${sc.reveal}</div><div class="divd"></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px"><div style="background:rgba(200,45,30,.1);border:1px solid rgba(200,45,30,.18);border-radius:8px;padding:13px 12px"><div style="font-size:8.5px;color:rgba(225,90,70,.9);letter-spacing:.08em;font-weight:700;margin-bottom:7px">WITHOUT COVERAGE</div><div style="font-size:22px;font-weight:700;color:#F0EDE6">${fmt(cost)}</div><div style="font-size:9.5px;color:rgba(240,237,230,.3);margin-top:3px">Out of pocket</div></div><div style="background:rgba(27,140,90,.1);border:1px solid rgba(27,140,90,.18);border-radius:8px;padding:13px 12px"><div style="font-size:8.5px;color:rgba(60,190,120,.9);letter-spacing:.08em;font-weight:700;margin-bottom:7px">WITH COVERAGE</div><div style="font-size:22px;font-weight:700;color:#F0EDE6">$500–$2K</div><div style="font-size:9.5px;color:rgba(240,237,230,.3);margin-top:3px">Deductible only</div></div></div><button class="btn" onclick="go(3)">See what this means in your state →</button></div></div>`;}
+function s3(){const state=S.zip.length>=5?SD[stateFrom(S.zip)]:null;return `<div class="sl fadein"><div class="topbar-l"><div class="bf" style="width:${pct(4,9)}%"></div></div><div class="pad"><div class="tag">YOUR STATE</div><div class="h1">Where are you located?</div><div class="sub-l">We'll show your state's minimum coverage requirements — and the gap between the legal minimum and actual protection.</div><input class="zip-in" id="zinp" type="tel" inputmode="numeric" maxlength="5" placeholder="Zip code" value="${S.zip}" oninput="S.zip=this.value;if(this.value.length>=5){S.stateCode=stateFrom(this.value);render()}"><div style="height:20px;margin-top:8px;font-size:12px;color:#1B8C5E;font-weight:500">${state?'✓ '+state.name:''}</div><div style="margin-top:20px"><button class="btn" onclick="if(S.zip.length>=5)go(4)" style="opacity:${S.zip.length>=5?1:.3}">Show my coverage breakdown →</button></div><div style="font-size:10.5px;color:rgba(26,26,26,.3);text-align:center;margin-top:14px;line-height:1.55">Your zip is used only to show local coverage data.</div></div></div>`;}function s4(){const sc=SC[S.scenario];const sd=SD[S.stateCode||'CO'];const cost=sd[sc.cost];const gap=cost-sd.prop;const cpct=Math.min(Math.round(sd.prop/cost*100),100);return `<div class="sl fadein"><div class="topbar-l"><div class="bf" style="width:${pct(5,9)}%"></div></div><div class="pad"><div class="tag">${sd.name.toUpperCase()} · COVERAGE BREAKDOWN</div><div class="h1" style="margin-bottom:16px">Here's the gap.</div><div style="background:#fff;border:1.5px solid #E0D9CF;border-radius:12px;padding:14px 16px;margin-bottom:12px"><div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px"><span style="font-size:12px;color:rgba(26,26,26,.45)">Actual incident cost</span><span style="font-size:15px;font-weight:700;color:#C03008">${fmt(cost)}</span></div><div class="bar-wrap"><div class="bar-inner" style="width:100%;background:#F0A090"></div></div><div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px"><span style="font-size:12px;color:rgba(26,26,26,.45)">State minimum covers</span><span style="font-size:15px;font-weight:700;color:#1B8C5E">${fmt(sd.prop)}</span></div><div class="bar-wrap"><div class="bar-inner" style="width:${cpct}%;background:#1B8C5E"></div></div><div style="display:flex;justify-content:space-between;padding-top:10px;margin-top:4px;border-top:1px solid #EDE8E0"><span style="font-size:12px;color:rgba(26,26,26,.45)">Your potential out-of-pocket gap</span><span style="font-size:14px;font-weight:700;color:#C03008">${fmt(gap)}</span></div></div><div style="background:#fff;border:1.5px solid #E0D9CF;border-radius:10px;padding:11px 14px;margin-bottom:14px"><div class="stat-row"><span style="color:rgba(26,26,26,.45)">State minimum liability</span><span style="font-weight:600">${sd.min}</span></div><div class="stat-row"><span style="color:rgba(26,26,26,.45)">Property damage limit</span><span style="font-weight:600">${fmt(sd.prop)}</span></div><div class="stat-row" style="border:none"><span style="color:rgba(26,26,26,.45)">Full coverage estimate</span><span style="font-weight:700;color:#1B8C5E">${sd.prem}/mo</span></div></div><div style="font-size:11px;color:rgba(26,26,26,.38);line-height:1.55;margin-bottom:20px">${sc.gap} · Source: Insurance Information Institute, 2024</div><button class="btn" onclick="go(5)">See more real scenarios →</button></div></div>`;}
+function s5(){const others=Object.keys(SC).filter(k=>k!==S.scenario);return `<div class="sl fadein"><div class="topbar-l"><div class="bf" style="width:${pct(6,9)}%"></div></div><div class="pad"><div class="tag">CHOOSE YOUR NEXT SCENARIO</div><div class="h1">Which situation worries you most?</div><div class="sub-l" style="margin-bottom:20px">Pick one to see the real numbers.</div>${others.map(k=>`<div class="sc-card" onclick="S.sc2='${k}';go(6)"><div style="width:42px;height:42px;background:#F0EAE0;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">${SC[k].em}</div><div style="flex:1"><div style="font-weight:700;font-size:13.5px;color:#1A1A1A">${SC[k].label}</div><div style="font-size:11.5px;color:rgba(26,26,26,.45);margin-top:2px;line-height:1.4">${SC[k].hook}</div></div><div style="color:#CCC7BE;font-size:18px;font-weight:300">›</div></div>`).join('')}<button class="btn-ll" onclick="go(7)">Skip — I've seen enough</button></div></div>`;}
+function s6(){const sc=SC[S.sc2||'hail'];const sd=SD[S.stateCode||'CO'];const cost=sd[sc.cost];const cost1=sd[SC[S.scenario].cost];return `<div class="sd fadein"><div class="topbar"><div class="bf" style="width:${pct(7,9)}%"></div></div><div class="pad"><div style="font-size:30px;margin-bottom:10px">${sc.em}</div><div class="tag">${sc.label.toUpperCase()}</div><div class="h1" style="margin-bottom:10px">${sc.hook}</div><div class="sub">${sc.reveal}</div><div style="background:rgba(255,255,255,.05);border-radius:10px;padding:14px;margin-bottom:18px"><div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px"><span style="font-size:12px;color:rgba(240,237,230,.38)">Average cost · ${sd.name}</span><span style="font-size:15px;font-weight:700;color:#E84010">${fmt(cost)}</span></div><div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-size:12px;color:rgba(240,237,230,.38)">With full coverage</span><span style="font-size:15px;font-weight:700;color:#5EC490">$500 – $2,000</span></div></div><div class="divd"></div><div style="font-size:13px;color:rgba(240,237,230,.55);line-height:1.65;margin-bottom:22px">Between these two scenarios alone: <span style="color:#F0EDE6;font-weight:600">${fmt(cost+cost1)}</span> in potential exposure — all of it coverable for a monthly premium.</div><button class="btn" onclick="go(7)">One last question →</button></div></div>`;}
+function s7(){const opts=['Yes — I feel well covered','I\'m not sure what I have','Probably not — I have gaps'];return `<div class="sl fadein"><div class="topbar-l"><div class="bf" style="width:${pct(8,9)}%"></div></div><div class="pad"><div class="tag">HONEST QUESTION</div><div class="h1" style="margin-bottom:8px">Based on what you just saw — do you feel financially protected if any of these happened today?</div><div class="sub-l" style="margin-bottom:20px">No right or wrong answer.</div>${opts.map((o,i)=>`<button class="mcq-l${S.conf===i?' sel':''}" onclick="S.conf=${i};render()"><div class="mcq-letter-l">${String.fromCharCode(65+i)}</div>${o}</button>`).join('')}<div style="margin-top:16px"><button class="btn" onclick="if(S.conf!==null)go(8)" style="opacity:${S.conf!==null?1:.3}">Continue →</button></div></div></div>`;}function s8(){const sd=SD[S.stateCode||'CO'];const confLabels=['Confirm you\'re as covered as you think.','Find out exactly what you have.','Find out exactly where your gaps are.'];const headline=confLabels[S.conf]||confLabels[1];return `<div class="sl fadein"><div class="topbar-l"><div class="bf" style="width:${pct(9,9)}%"></div></div><div class="pad"><div class="tag">FREE COVERAGE REVIEW</div><div class="h1" style="margin-bottom:8px">${headline}</div><div class="sub-l">A licensed agent in ${sd.name} will review your current coverage and tell you exactly where you stand — no cost, no obligation, no pressure.</div><div style="margin-bottom:10px"><div style="font-size:9.5px;letter-spacing:.06em;font-weight:700;color:rgba(26,26,26,.4);margin-bottom:5px">FIRST NAME</div><input id="nm" class="txt-in" placeholder="Your first name" value="${S.name}" oninput="S.name=this.value" onfocus="this.style.borderColor='#E84010'" onblur="this.style.borderColor='#D0CAC0'"></div><div style="margin-bottom:14px"><div style="font-size:9.5px;letter-spacing:.06em;font-weight:700;color:rgba(26,26,26,.4);margin-bottom:5px">PHONE NUMBER</div><input id="ph" class="txt-in" type="tel" placeholder="(___) ___-____" value="${S.phone}" oninput="S.phone=this.value" onfocus="this.style.borderColor='#E84010'" onblur="this.style.borderColor='#D0CAC0'"></div><div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:18px;background:#FFF8F5;border:1px solid #F0DDD5;border-radius:8px;padding:10px 12px"><input type="checkbox" id="tc" checked style="margin-top:2px;flex-shrink:0;accent-color:#E84010;width:14px;height:14px"><label for="tc" style="font-size:10.5px;color:rgba(26,26,26,.45);line-height:1.6">By submitting, I consent to be contacted by a licensed insurance professional regarding coverage options. Message &amp; data rates may apply. I may opt out at any time. <a href="privacy.html" target="_blank" style="color:#E84010;text-decoration:none">View privacy policy.</a></label></div><button id="submit-btn" class="btn" onclick="handleSubmit()">Connect me with a licensed agent →</button><div id="submit-error" style="font-size:11px;color:#C03008;text-align:center;margin-top:8px;display:none">Something went wrong — please try again.</div><div style="font-size:11px;color:rgba(26,26,26,.3);text-align:center;margin-top:10px;line-height:1.5">No spam. A real licensed agent calls within 24 hours.</div></div></div>`;}
+function s9(){const sd=SD[S.stateCode||'CO'];return `<div class="sd fadein"><div class="topbar"><div class="bf" style="width:100%"></div></div><div class="pad" style="align-items:center;justify-content:center;text-align:center"><div style="width:64px;height:64px;border-radius:50%;border:2px solid #E84010;display:flex;align-items:center;justify-content:center;margin:0 auto 20px"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M5 13l6 6 10-11" stroke="#E84010" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div style="font-size:9.5px;letter-spacing:.11em;color:#E84010;font-weight:700;margin-bottom:10px">YOU'RE ALL SET</div><div class="h1" style="margin-bottom:12px">Thanks${S.name?', '+S.name:''}.</div><div style="font-size:13.5px;color:rgba(240,237,230,.55);line-height:1.7;margin-bottom:28px">A licensed agent in ${sd.name} will call within 24 hours to walk through your coverage and tell you exactly where you stand.</div><div style="background:rgba(255,255,255,.06);border-radius:12px;padding:16px 18px;width:100%;text-align:left;margin-bottom:24px"><div style="font-size:9px;letter-spacing:.09em;color:#E84010;font-weight:700;margin-bottom:12px">WHAT HAPPENS NEXT</div>${['They confirm your current policies and limits','They identify any gaps for your state and situation','You get a clear picture — no pressure, no commitment'].map((t,i)=>`<div style="display:flex;gap:10px;margin-bottom:8px"><span style="color:#E84010;font-size:12px;font-weight:700;flex-shrink:0">${i+1}.</span><span style="font-size:12px;color:rgba(240,237,230,.6);line-height:1.5">${t}</span></div>`).join('')}</div><button class="btn-ol" onclick="restart()">See another scenario →</button></div></div>`;}
+async function handleSubmit(){
   if(!S.name.trim()||!S.phone.trim()){alert('Please enter your name and phone number.');return;}
+  const tc=document.getElementById('tc');if(tc&&!tc.checked){alert('Please agree to the consent terms.');return;}
+  const btn=document.getElementById('submit-btn');const errEl=document.getElementById('submit-error');
+  if(btn){btn.innerHTML='<span class="spinner"></span>Sending...';btn.disabled=true;}
+  if(errEl)errEl.style.display='none';
+  const confLabels=['Yes - feel well covered','Not sure what I have','Probably not - I have gaps'];
+  const lead={name:S.name.trim(),phone:S.phone.trim(),zip:S.zip||'not provided',state:SD[S.stateCode||'CO'].name,state_code:S.stateCode||'CO',scenario:SC[S.scenario].label,scenario_answer:SC[S.scenario].opts[S.answer]||'skipped',second_scenario:S.sc2?SC[S.sc2].label:'none',confidence:confLabels[S.conf]||'not answered',utm_source:UTM.source,utm_medium:UTM.medium,utm_campaign:UTM.campaign,utm_content:UTM.content,utm_term:UTM.term,ab_variant:AB_VARIANT,time_to_submit:tSec()+'s',submitted_at:new Date().toISOString(),funnel_version:'2.0'};
+  await submitLead(lead);
   go(9);
 }
-function restart(){
-  Object.assign(S,{screen:0,scenario:'car',answer:-1,zip:'',sc2:null,conf:null,name:'',phone:''});
-  render();
-}
-
+const screens=[s0,s1,s2,s3,s4,s5,s6,s7,s8,s9];
+function go(n){S.screen=n;render();window.scrollTo(0,0);}
+function render(){document.getElementById('aic').innerHTML=screens[S.screen]();}
+function pick(i){S.answer=i;render();}
+function restart(){Object.assign(S,{screen:0,scenario:'car',answer:-1,zip:'',stateCode:'',sc2:null,conf:null,name:'',phone:'',startTime:Date.now()});render();}
+const preScenario=new URLSearchParams(window.location.search).get('s');
+if(preScenario&&SC[preScenario])S.scenario=preScenario;
 render();
 </script>
 </body>
